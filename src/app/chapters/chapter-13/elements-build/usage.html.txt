@@ -1,0 +1,10 @@
+<!-- Loading the element bundle and using the tag in any host page.
+     Stored as .txt so the build does not pick it up; the demo host renders the same
+     tag and attaches the same 'clicked' listener. -->
+<script src="/assets/my-widget.js"></script>
+
+<my-widget title="Hello"></my-widget>
+<script>
+  document.querySelector('my-widget')
+    .addEventListener('clicked', e => console.log('Element says:', e.detail));
+</script>

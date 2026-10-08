@@ -1,0 +1,4 @@
+<!-- Using the registered custom element in any host page (framework-agnostic).
+     Stored as .txt so the build does not pick it up; the demo host renders the same tag. -->
+<!-- usage anywhere -->
+<user-card-element user='{"name":"Alice"}'></user-card-element>

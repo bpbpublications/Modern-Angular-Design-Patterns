@@ -1,0 +1,26 @@
+<div class="console" [class.expanded]="expanded()">
+    <div class="console-header" [class.flash]="flash()" (click)="toggle()">
+    <span class="chevron">{{ expanded() ? '▾' : '▴' }}</span>
+    <span class="title">Console</span>
+    @if (lines().length > 0) {
+        <span class="count">{{ lines().length }}</span>
+    }
+    @if (!expanded()) {
+        <span class="preview" [class]="latest()?.level">
+        {{ latest()?.text ?? 'Interact with the demos — console output appears here.' }}
+        </span>
+    }
+    <span class="spacer"></span>
+    <button (click)="clear(); $event.stopPropagation()">Clear</button>
+    </div>
+    @if (expanded()) {
+    <div class="console-body" #body>
+        @if (lines().length === 0) {
+        <div class="empty">Interact with the demos — console output appears here.</div>
+        }
+        @for (line of lines(); track $index) {
+        <div class="line" [class]="line.level">{{ line.text }}</div>
+        }
+    </div>
+    }
+</div>

@@ -1,0 +1,59 @@
+<h1>Chapter 4 — Reusable Services</h1>
+<p class="intro">
+    Reusable services in practice: the Service Layer pattern for business logic, Angular's
+    dependency injection system (service-in-service, HttpClient, injection tokens), the
+    Singleton pattern, and the Iterator pattern for trees and RxJS streams — every demo runs
+    the book's code as-is.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Service Layer pattern for business logic"
+    description="OrderComponent stays focused on the form UI while OrderService owns placeOrder()/cancelOrder() HTTP calls. The 'before' snippet with HTTP logic inline in the component lives in service-layer/order-inline.component.ts."
+>
+    <app-ch4-service-layer-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Service-in-service DI"
+    description="OrderService injects ProductService; the component only injects OrderService. Chained DI keeps each service focused on one responsibility."
+>
+    <app-ch4-service-in-service-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Using dependency injection to fetch API data"
+    description="ProductService wraps HttpClient and returns Observable<Product[]> from fakestoreapi.com; ProductListComponent subscribes in ngOnInit and renders with @for."
+>
+    <app-ch4-di-http-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Injection tokens for advanced DI scenarios"
+    description="The API_URL InjectionToken is provided with a useValue and injected where needed. The book's bootstrapApplication snippet providing it at the app edge lives in injection-token/main.ts (reference only)."
+>
+    <app-ch4-injection-token-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Singleton pattern in Angular"
+    description="AuthService is provided in root, so two LoginComponent instances share the same authentication state held by a single service instance."
+>
+    <app-ch4-singleton-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Iterator pattern — traversing a tree structure"
+    description="MenuIteratorService uses a generator function to recursively yield every MenuItem; MenuComponent consumes the iterator to render a flat list."
+>
+    <app-ch4-iterator-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Iterator pattern with RxJS"
+    description="PagesService uses expand/map/reduce to iterate over paginated API data lazily: each page request is triggered only after the previous one arrives (watch the console)."
+>
+    <app-ch4-iterator-rxjs-demo />
+</app-demo-card>

@@ -1,0 +1,100 @@
+<h1>Chapter 6 — Reactive Programming with RxJS</h1>
+<p class="intro">
+    Observables, Subjects and BehaviorSubjects, error handling and retries, event-driven
+    architecture, and the Signals + RxJS hybrid model — every demo below runs the book's code
+    as-is against a supporting fake /api backend.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Core concepts — Push vs Pull"
+    description="Pull: reading a signal's current value on demand. Push: HttpClient emits when the response arrives and the code reacts to that emission."
+>
+    <app-ch6-pull-push-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Observables as the building blocks + Observer and subscription"
+    description="The book's stream$ Observable emits 'Hello', 'World' and completes. Subscribe with a plain callback, or with an Observer object exposing next/error/complete."
+>
+    <app-ch6-basic-observable-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Declarative vs imperative code in RxJS"
+    description="The same conditional data fetch expressed imperatively (if + then) and declaratively (filter(Boolean) + switchMap). Toggle the login flag and compare — the declarative subscription keeps reacting to isLoggedIn$ changes."
+>
+    <app-ch6-declarative-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Implementing Signals in reactive components"
+    description="The book's UserPage converts an HTTP Observable to a Signal via toSignal(startWith(null)) and derives loading with computed()."
+>
+    <app-ch6-signals-component-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Observables, Subjects, and BehaviorSubjects"
+    description="greeting$ shows a unicast Observable; a Subject multicasts one emission to two subscribers; a BehaviorSubject replays its latest value (2) to the late subscriber B."
+>
+    <app-ch6-subjects-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Debouncing and throttling in UI interactions"
+    description="debounceTime(300) emits the search value only after typing pauses; throttleTime(1000) limits window scroll events to one per second."
+>
+    <app-ch6-debounce-throttle-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Error handling and retry mechanisms"
+    description="The book's ConfigService variants: catchError fallback, retry(3), retry with a fixed delay(1000), finalize cleanup, and the exponential-backoff drop-in (retry + timer)."
+>
+    <app-ch6-error-handling-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Cross-component communication using Subject"
+    description="SenderComponent emits through the EventBusService; ReceiverComponent subscribes with takeUntilDestroyed — no direct references between them."
+>
+    <app-ch6-event-bus-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Combining streams with combineLatest, forkJoin, and zip"
+    description="combineLatest reacts to changes in any input stream; forkJoin waits for both HTTP calls to complete; zip pairs timer ticks with your clicks in lockstep."
+>
+    <app-ch6-combine-streams-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Managing subscriptions and preventing memory leaks"
+    description="AsyncPipe handles subscribe/unsubscribe for user$; TickerComponent scopes its interval with takeUntilDestroyed (destroy it and the ticking stops); take(1) makes an HTTP stream single-use."
+>
+    <app-ch6-subscriptions-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Use Signals for UI state and RxJS for async streams"
+    description="Stream in, signal out: a signal tracks the query, toObservable adds debounceTime + distinctUntilChanged, switchMap calls the API, and toSignal feeds results back to the view."
+>
+    <app-ch6-hybrid-search-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Reactive forms with RxJS"
+    description="The book's valueChanges pipeline: takeUntilDestroyed, debounceTime(300), distinctUntilChanged, switchMap into the search API — results render below."
+>
+    <app-ch6-reactive-forms-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Service + UI coordination — UserFacade"
+    description="UserFacade wraps GET /api/user in a signal and computes loading; the template stays declarative and subscription-free (book template rendered verbatim)."
+>
+    <app-ch6-user-facade-demo />
+</app-demo-card>

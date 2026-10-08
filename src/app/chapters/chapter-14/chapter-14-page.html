@@ -1,0 +1,137 @@
+<h1>Chapter 14 — Real-World Case Studies</h1>
+<p class="intro">
+    The book's closing case studies in action: an enterprise HR portal built with Singleton,
+    Facade, Adapter, and Strategy; patterns applied in real projects; testing strategies for
+    pattern-driven apps; and error handling with structured logging — every demo runs the
+    book's code as-is.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Enterprise app — Singleton pattern"
+    description="AuthService is registered via providedIn: 'root': one shared instance per Angular runtime acts as the single source of truth for user sessions and global config."
+>
+    <app-ch14-singleton-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Enterprise app — Facade pattern"
+    description="EmployeeFacade encapsulates NgRx selectors and dispatchers: components call getProfile()/loadProfile(id) while the User → Component → Facade → Store → API flow runs underneath (effects + fabricated backend + EmployeeAdapter)."
+>
+    <app-ch14-employee-facade-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Enterprise app — Adapter pattern"
+    description="EmployeeAdapter normalizes raw legacy API payloads (emp_id, full_name, job_title, start_date) into the clean Employee model. The defensive version applies safe fallbacks and date guards; the book's earlier non-defensive version lets malformed data leak through."
+>
+    <app-ch14-employee-adapter-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Enterprise app — Strategy pattern"
+    description="The AccessStrategy contract (canActivate(role)) lets role-based UI access switch dynamically at runtime — pick a role and watch each concrete strategy answer."
+>
+    <app-ch14-access-strategy-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Real projects — Facade for simpler components"
+    description="ProductFacade is the single entry point to the product NgRx feature: products$ and loading$ expose state as observables, loadAll() and selectProduct(id) trigger changes through well-named methods."
+>
+    <app-ch14-product-facade-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Real projects — Adapter for decoupled API models"
+    description="OrderAdapter converts a backend DTO (order_id, client_name, amount, order_date) into the application's Order model with parsed number and Date fields."
+>
+    <app-ch14-order-adapter-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Real projects — Builder for dynamic forms"
+    description="FormBuilderService.createField() turns FieldConfig JSON into the right AbstractControl — text fields get Validators.required, selects default to their first option."
+>
+    <app-ch14-form-builder-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Real projects — Strategy for configurable validation"
+    description="EmailValidation implements the ValidationStrategy contract: validation logic is plugged in at runtime instead of scattering conditional checks across components."
+>
+    <app-ch14-validation-strategy-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Real projects — Singleton shared service"
+    description="NotificationService broadcasts through an RxJS Subject: any part of the app calls notify(), any component subscribes to notifications$ — a decoupled cross-cutting building block."
+>
+    <app-ch14-notification-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Real projects — Mediator for decoupled communication"
+    description="UIEventMediator publishes sidebar toggle events through a shared service, so components communicate without direct parent-child links."
+>
+    <app-ch14-mediator-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Real projects — Observer with RxJS and NgRx"
+    description="DashboardComponent selects the current user from the store as an Observable; the async pipe subscribes and updates the UI whenever session state changes."
+>
+    <app-ch14-observer-dashboard-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Testing strategies — unit tests for patterns"
+    description="Strategy, Builder, Signals, and debounced streams tested as pure TypeScript; the HTTP boundary tested with provideHttpClientTesting. The specs live verbatim in testing-strategies/, and the button runs the adapter seam the HTTP test asserts."
+>
+    <app-ch14-unit-testing-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Testing strategies — E2E critical journeys"
+    description="The book's Playwright journey (e2e/critical-path.spec.ts) uses stable data-testid selectors instead of CSS classes; this mini inventory UI carries those exact hooks. The seed-data-via-API helper lives in e2e/seed-user.spec.ts."
+>
+    <app-ch14-e2e-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Error handling — normalizing HTTP interceptor"
+    description="errorNormalizingInterceptor attaches an X-Correlation-Id header and maps status codes to the AppError taxonomy (auth, validation, rateLimit, server, network) in one place."
+>
+    <app-ch14-error-interceptor-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Error handling — global fallback handler"
+    description="GlobalAppErrorHandler captures uncaught errors, emits a structured unhandled_exception event through the LOGGER token, and mirrors the raw error to the console."
+>
+    <app-ch14-error-handler-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Logging — structured events with redaction"
+    description="The LogEvent contract plus redact() produce searchable, structured logs — severity, event name, correlation ID, and metadata with tokens and passwords replaced by [REDACTED]."
+>
+    <app-ch14-logging-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Lessons learned for scaling Angular applications"
+    description="This book section distills the chapter's tips for scaling (no code snippets)."
+>
+    <ul class="lessons">
+    <li>Enforce feature boundaries early — standalone feature packages, public APIs, lint rules.</li>
+    <li>Design with reusability in mind — composition, input()/output() signals, Storybook.</li>
+    <li>Use Facades to shield state and logic; Adapters to isolate I/O contracts.</li>
+    <li>Control state explosion — global NgRx only for cross-cutting concerns, scoped stores elsewhere.</li>
+    <li>Plan for performance from the start — lazy loading, OnPush, trackBy, pure pipes.</li>
+    <li>Automate quality gates and standardize conventions; prepare for micro frontends if needed.</li>
+    <li>Invest in developer experience — architecture must align with team workflows.</li>
+    </ul>
+</app-demo-card>

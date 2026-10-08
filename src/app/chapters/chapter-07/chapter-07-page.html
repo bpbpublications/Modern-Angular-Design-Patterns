@@ -1,0 +1,57 @@
+<h1>Chapter 7 — State Management with NgRx</h1>
+<p class="intro">
+    Store, actions, reducers, effects, selectors, and the facade pattern — the NgRx demos
+    below share one live 'cart' feature slice (registered via this chapter's routes), so
+    dispatching in one card updates every card: a single source of truth.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Service-based state management without NgRx"
+    description="The book's CartService holds cart state in a BehaviorSubject; components push items and read cart$ directly — no actions, reducers, or traceability."
+>
+    <app-ch7-service-cart-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Centralized state management with NgRx"
+    description="The full unidirectional flow: dispatch addItem/removeItem actions, cartReducer updates the immutable CartState, and the book's CartComponent renders it through selectCartItems / selectCartItemCount."
+>
+    <app-ch7-store-cart-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Setting up the NgRx store and effects"
+    description="The book's main.ts bootstrap snippets (provideStore + provideStoreDevtools, then + provideEffects) live verbatim in store-setup/main.ts and effects-setup/main.ts, and the route-scoped variant in routes.ts — all intentionally never imported, since an app can only bootstrap once."
+>
+    <p>
+    This page registers the very same providers for real via
+    <code>chapter-07.routes.ts</code> (route-level <code>provideStore</code>,
+    <code>provideStoreDevtools</code>, <code>provideEffects</code>), which powers every
+    NgRx demo on this page. With the Redux DevTools browser extension installed you can
+    watch each dispatched action and state change.
+    </p>
+</app-demo-card>
+
+<app-demo-card
+    title="NgRx effects to handle side effects"
+    description="CartEffects listens for addItem with mergeMap (every add must complete — no cancellation), calls CartService.addItemToCart, then dispatches addItemOk or addItemErr. Watch the console for the API round-trip."
+>
+    <app-ch7-effects-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Creating selectors for optimized data retrieval"
+    description="Memoized selectors: selectCartItemCount derives the count, and the advanced selectExpensiveItems combines selectCartItems with a price filter (> 5000) — recomputed only when the items slice changes."
+>
+    <app-ch7-selectors-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Using the facade pattern with NgRx"
+    description="The facade version of CartComponent knows nothing about NgRx: it calls CartFacade.addItem()/removeItem() and reads cartItems$/totalItems$ — the facade is the single API between components and the store."
+>
+    <app-ch7-facade-cart-demo />
+</app-demo-card>

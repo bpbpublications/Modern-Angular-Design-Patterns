@@ -1,0 +1,169 @@
+ <h1>Chapter 2 — TypeScript Patterns for Angular</h1>
+<p class="intro">
+    Decorator, Prototype, Factory, Strategy, Builder, and Command patterns plus advanced
+    TypeScript techniques — every demo below runs the book's code as-is.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Static typing for code safety"
+    description="UserProfile model class plus UserProfileService, which maps a typed HTTP response into UserProfile instances."
+>
+    <app-ch2-static-typing-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Interfaces for data models"
+    description="The User interface provides a consistent contract for API responses and services."
+>
+    <app-ch2-interfaces-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Generics for reusable API services"
+    description="ApiService exposes a generic get<T>() with catchError; UsersComponent consumes it and logs the strongly typed users on init."
+>
+    <app-ch2-generics-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Decorator pattern in TypeScript"
+    description="BasicNotification is wrapped by EmailNotification and SMSNotification decorators — behavior stacks without modifying the base class."
+>
+    <app-ch2-decorator-pattern-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="@Directive for DOM manipulation"
+    description="HoverHighlightDirective changes the background color on mouseenter/mouseleave; the color comes from the template."
+>
+    <app-ch2-hover-highlight-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="@Pipe() for data transformation"
+    description="CapitalizePipe transforms 'hello' into 'Hello' directly in the template."
+>
+    <app-ch2-capitalize-pipe-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="@HostListener() for element event management"
+    description="ScrollTrackerComponent's @HostListener('window:scroll') runs continuously, but only logs the scroll position while listening; click Start, then scroll this page to see it (Stop pauses the logging)."
+>
+    <app-ch2-scroll-tracker-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Custom class decorator"
+    description="The Logger decorator logs when the class is defined; instantiating User logs again from its constructor."
+>
+    <app-ch2-class-decorator-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Custom method decorator"
+    description="@LogMethod wraps Calculator.add and logs the method name and arguments before executing the original method."
+>
+    <app-ch2-method-decorator-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Custom property decorator"
+    description="@ReadOnly gives Profile.prototype.username a getter/setter that allows each instance one write (in the constructor) and throws on reassignment; the demo attempts a reassignment, logs the caught error, then logs the unchanged value."
+>
+    <app-ch2-property-decorator-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Prototype pattern"
+    description="User implements Cloneable<User> with a clone() method; ProductPrototype deep-clones its Price. Copies keep the values but are new objects."
+>
+    <app-ch2-prototype-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Factory pattern in TypeScript"
+    description="NotificationFactory.createNotification() encapsulates which concrete Notification is instantiated. The DI-provider variant (InjectionToken NOTIFICATION + useFactory) lives in factory/main.ts."
+>
+    <app-ch2-factory-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Factory pattern in an Angular service"
+    description="LoggerFactory creates ConsoleLogger or FileLogger instances behind the ILogger interface."
+>
+    <app-ch2-logger-factory-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Strategy pattern in TypeScript"
+    description="PaymentProcessor delegates to whichever PaymentStrategy it was constructed with — CreditCardPayment or PayPalPayment."
+>
+    <app-ch2-strategy-ts-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Strategy pattern with Angular DI"
+    description="BubbleSortStrategy and QuickSortStrategy are injectable SortingStrategy implementations; the per-route providers snippet is ported in strategy/sorting.routes.ts."
+>
+    <app-ch2-strategy-angular-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Builder pattern"
+    description="UserProfileBuilder assembles a UserProfile step by step via a fluent API; UserService shows the builder used inside an Angular service."
+>
+    <app-ch2-builder-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Command pattern in TypeScript"
+    description="LightOnCommand/LightOffCommand encapsulate Light actions behind execute() and undo()."
+>
+    <app-ch2-command-light-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Command pattern in Angular"
+    description="CartComponent creates AddToCartCommand objects and runs them through CommandService, which keeps a history for undo."
+>
+    <app-ch2-command-cart-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Advanced Command — undo/redo stacks"
+    description="The extended CommandService maintains separate undo and redo stacks: execute pushes onto Undo and clears Redo; undo/redo move commands between stacks."
+>
+    <app-ch2-command-advanced-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Mapped types"
+    description="PartialType<T> makes every property optional; ReadonlyType<T> makes every property readonly (reassignment is a compile-time error)."
+>
+    <app-ch2-mapped-types-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Utility types — Pick and Omit"
+    description="UserPreview = Pick<User, 'id' | 'name'> and UserWithoutEmail = Omit<User, 'email'> reshape the User interface without duplication."
+>
+    <app-ch2-utility-types-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Conditional types"
+    description="Result<M, T> resolves to Promise<T> for 'async' mode and plain T for 'sync' — AddToCartSync returns a number, AddToCartAsync a Promise<number>."
+>
+    <app-ch2-conditional-types-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Type guards"
+    description="isString() narrows string | number at runtime, so printLength() can safely read .length only for strings."
+>
+    <app-ch2-type-guards-demo />
+</app-demo-card>

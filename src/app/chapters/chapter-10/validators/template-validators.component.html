@@ -1,0 +1,23 @@
+<form>
+    <input name="username" ngModel required #req="ngModel" placeholder="required" />
+    <span [class.ok]="req.valid">{{ req.valid ? 'valid' : 'invalid' }}</span>
+</form>
+<form>
+    <input name="username" ngModel minlength="3" maxlength="10" #len="ngModel" placeholder="3–10 chars" />
+    <span [class.ok]="len.valid">{{ len.valid ? 'valid' : 'invalid' }}</span>
+</form>
+<form>
+    <input name="username" ngModel pattern="^[a-zA-Z0-9_]+$" #pat="ngModel" placeholder="letters/digits/_" />
+    <span [class.ok]="pat.valid">{{ pat.valid ? 'valid' : 'invalid' }}</span>
+</form>
+<form>
+    <input name="email" ngModel email required #em="ngModel" placeholder="name@example.com" />
+    <span [class.ok]="em.valid">{{ em.valid ? 'valid' : 'invalid' }}</span>
+</form>
+
+<p><strong>"Applying validators in template-driven forms" — the ngForm example:</strong></p>
+<form #form="ngForm">
+    <input name="email" ngModel required email placeholder="email" />
+    <input name="password" ngModel required minlength="6" type="password" placeholder="password (min 6)" />
+    <span [class.ok]="form.valid">form.valid: {{ form.valid }}</span>
+</form>

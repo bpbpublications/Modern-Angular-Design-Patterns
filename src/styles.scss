@@ -1,0 +1,115 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #23263b;
+  background: #f4f5fa;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+// Toggled by ConsolePanel: reserves scroll space for the expanded console dock
+// inside the layout's content column, so bottom-of-page demos can be scrolled
+// above the dock (padding the body instead would expose a gap below the
+// sidebar column).
+body.console-dock-expanded .content {
+  padding-bottom: calc(32vh + 96px);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+}
+
+code {
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.92em;
+  background: #eceef6;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #c9cde4;
+  background: #fff;
+  color: #23263b;
+  border-radius: 8px;
+  padding: 7px 14px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: #eef0fa;
+    border-color: #9aa1c9;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #f4f5fa;
+    border-color: #dcdfef;
+    color: #9096b3;
+  }
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  border: 1px solid #c9cde4;
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: #fff;
+  color: #23263b;
+
+  &:focus {
+    outline: 2px solid #3d5afe33;
+    border-color: #3d5afe;
+  }
+}
+
+input,
+select,
+button, 
+label {
+  & + & {
+    margin-left: 8px;
+  }
+}
+
+div + div {
+  margin-top: 8px;
+}
+
+div.row > div {
+  margin: 0;
+}
+
+app-chapter-01-page,
+app-chapter-02-page,
+app-chapter-03-page,
+app-chapter-04-page,
+app-chapter-05-page,
+app-chapter-06-page,
+app-chapter-07-page,
+app-chapter-08-page,
+app-chapter-09-page,
+app-chapter-10-page,
+app-chapter-11-page,
+app-chapter-12-page,
+app-chapter-13-page,
+app-chapter-14-page {
+  h1 { margin-top: 0; }
+  .intro { color: #5a5f7d; max-width: 720px; }
+}

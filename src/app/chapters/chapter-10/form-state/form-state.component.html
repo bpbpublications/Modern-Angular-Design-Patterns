@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="state-email">Email</label>
+    <input type="email" formControlName="email" />
+    @if (email.invalid && (email.dirty || email.touched)) {
+    <div>
+        @if(email.errors?.['required']) {
+        <small>Email is required.</small>
+        }
+        @if(email.errors?.['email']) {
+        <small>Invalid email format.</small>
+        }
+    </div>
+    }
+    <button type="submit" [disabled]="!canSubmit">Submit</button>
+</form>
+
+<!-- Live view of the state flags the section describes. -->
+<p class="flags">
+    pristine: <code>{{ email.pristine }}</code> ·
+    dirty: <code>{{ email.dirty }}</code> ·
+    touched: <code>{{ email.touched }}</code> ·
+    untouched: <code>{{ email.untouched }}</code> ·
+    valid: <code>{{ email.valid }}</code> ·
+    invalid: <code>{{ email.invalid }}</code> ·
+    canSubmit: <code>{{ canSubmit }}</code>
+</p>
+<p>
+    <button type="button" (click)="logStates()">Read the control state in TypeScript</button>
+</p>

@@ -1,0 +1,94 @@
+ <h1>Chapter 5 — Building with Standalone Components and Providers</h1>
+<p class="intro">
+    Standalone components, directives, and pipes as the building blocks of module-less
+    Angular; migrating away from NgModules; provider scopes (app, route, component); the
+    Provider Pattern with InjectionTokens; and the scalability, testing, and team practices
+    that follow — every demo runs the book's code as-is.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Standalone components, directives, and pipes"
+    description="AlertComponent declares a signal-based input() and needs no NgModule; the legacy @Input() equivalent from the book's note renders next to it."
+>
+    <app-ch5-standalone-blocks-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Composing features with standalone components"
+    description="ProductPage holds local state in a signal and is routed to directly with loadComponent — a feature without a feature module."
+>
+    <app-ch5-composing-features-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Directives and pipes"
+    description="HighlightDirective uses @HostBinding/@HostListener with a configurable input() color; TitleCaseStrictPipe capitalizes the first letter of each word."
+>
+    <app-ch5-directives-pipes-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Migrating from NgModule to standalone APIs"
+    description="DashboardComponent is converted to standalone: true with its own imports array. The bootstrapApplication, loadComponent-route, and drop-CoreModule snippets are kept as verbatim reference files in migration/."
+>
+    <app-ch5-migration-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Provider scopes in modern Angular"
+    description="Application, route, and component scope side by side: API_BASE_URL at the app edge (reference), ADMIN_API scoped to the admin route, and SettingsAdapterService created per SettingsComponent instance."
+>
+    <app-ch5-provider-scopes-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Provider Pattern and shared functionality"
+    description="The PRODUCT_API InjectionToken decouples consumers from implementations: RealProductApiService at app scope vs the book's useValue override for the demo route — the same DemoPage consumes both."
+>
+    <app-ch5-provider-pattern-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Shared provider functions"
+    description="provideUserFeature() groups related providers (USER_API → UserHttpService, plus UserService) so features can be registered as one unit — modularity without modules."
+>
+    <app-ch5-shared-functionality-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Maximizing performance through lazy loading"
+    description="The product/:id route lazy-loads ProductDetailsComponent with loadComponent — feature-level isolation with dynamic route data."
+>
+    <app-ch5-lazy-loading-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Route-scoped providers"
+    description="EditorStateService lives in the editor route's injector: it is created when the scope activates and destroyed when it deactivates — ideal for stateful editors, wizards, or forms."
+>
+    <app-ch5-route-scoped-providers-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Testing with standalone TestBed"
+    description="ProductCardComponent injects the PRODUCT_API token and renders its title; the spec imports the component directly into TestBed and swaps the token with overrideProvider()."
+>
+    <app-ch5-testing-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Team collaboration — encapsulate features with route providers"
+    description="The profile route binds PROFILE_API to ProfileService via its providers array, keeping feature logic encapsulated and independently owned."
+>
+    <app-ch5-team-collaboration-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Team collaboration — document routing and ownership"
+    description="The billing route carries data: { owner: 'billing-team' } metadata that tooling, CI checks, or dashboards can read to support clear code ownership."
+>
+    <app-ch5-routing-ownership-demo />
+</app-demo-card>

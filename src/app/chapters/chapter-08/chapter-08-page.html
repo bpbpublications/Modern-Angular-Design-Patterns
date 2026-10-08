@@ -1,0 +1,66 @@
+ <h1>Chapter 8 — Routing with Angular Standalone APIs</h1>
+<p class="intro">
+    Route configuration, dynamic parameters, functional guards and resolvers, complex routing
+    scenarios, and the Router lifecycle. The book's route arrays are mounted for real in a
+    routed playground at <code>/chapter-08/router-demo</code>.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Understanding routing in Angular"
+    description="The book's simple route definition (home, about, empty-path redirect) is mounted for real; each link swaps the rendered component without a page reload."
+>
+    <app-ch8-simple-routes-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Standalone route configuration"
+    description="Core route properties (path, component, children, redirectTo, pathMatch) plus the complete provideRouter bootstrap from 'Putting it all together' — kept verbatim, with the wildcard 404 fallback observable in the playground."
+>
+    <app-ch8-route-config-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Handling dynamic routes and route parameters"
+    description="Dynamic segments (user/:id, product/:slug), snapshot vs observable access, toSignal(paramMap/queryParamMap), and programmatic navigation with route and query parameters."
+>
+    <app-ch8-dynamic-routes-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Overview of Router Guards"
+    description="Functional CanActivate, CanDeactivate, Resolve (typed and inline), and CanMatch — all live on real routes. Toggle the auth state and watch guards allow, block, redirect, and prefetch."
+>
+    <app-ch8-guards-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Handling complex routing scenarios"
+    description="Nested child routes rendered in the parent's router-outlet, an auxiliary route in the named 'sidebar' outlet, feature-based routing with loadChildren + ADMIN_ROUTES, and a custom RouteReuseStrategy that caches specific routes via data: { reuse: true }."
+>
+    <app-ch8-complex-routing-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Understanding the Router lifecycle"
+    description="The consolidated NavigationService reacts to NavigationStart/End/Cancel/Error plus RoutesRecognized and GuardsCheckStart/End: a global loading signal, analytics page views, and notifications on cancelled or failed navigations."
+>
+    <app-ch8-lifecycle-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Best practices for Angular Routing"
+    description="The section's guidance with its small code fragments — the feature-based admin example, the wildcard fallback, and the routerLink binding — collected verbatim in best-practices/best-practices-snippets.ts."
+>
+    <ul>
+    <li>Organize routes by lazy loaded features (<code>feature.routes.ts</code> + <code>loadChildren</code>) — identical to <code>complex-routing/admin.routes.ts</code>.</li>
+    <li>Use route guards to enforce access control; combine them for layered security.</li>
+    <li>Apply lowercase, hyphenated, readable paths.</li>
+    <li>Handle wildcard fallbacks last: <code>&#123; path: '**', redirectTo: '/not-found' &#125;</code>.</li>
+    <li>Minimize deeply nested routes (2–3 levels).</li>
+    <li>Avoid hardcoding paths: <code>&lt;a [routerLink]="['/products', product.id]"&gt;View&lt;/a&gt;</code>.</li>
+    <li>Use query parameters for filters/sorts; listen to router events for UX enhancements.</li>
+    </ul>
+</app-demo-card>

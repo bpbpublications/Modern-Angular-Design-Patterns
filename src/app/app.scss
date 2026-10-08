@@ -1,0 +1,106 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: #1a1c2c;
+  color: #e6e6ef;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 20px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: inherit;
+
+  .brand-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
+
+  .brand-subtitle {
+    font-size: 13px;
+    color: #a9adcb;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 8px 24px;
+  gap: 2px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: #c8cbe0;
+  text-decoration: none;
+  font-size: 13.5px;
+  line-height: 1.35;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+  }
+
+  &.active {
+    background: #3d5afe;
+    color: #fff;
+
+    .nav-number {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+  }
+}
+
+.nav-number {
+  flex-shrink: 0;
+  min-width: 22px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  color: #a9adcb;
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  // Extra bottom padding keeps the last demo card clear of the fixed
+  // console dock's collapsed bar.
+  padding: 28px 36px 96px;
+  background: #f4f5fa;
+}
+
+@media (max-width: 800px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+}

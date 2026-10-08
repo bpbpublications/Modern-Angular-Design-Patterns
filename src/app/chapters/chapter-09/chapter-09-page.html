@@ -1,0 +1,57 @@
+<h1>Chapter 9 — Lazy Loading and Performance Optimization</h1>
+<p class="intro">
+    The lazy pattern, feature-based lazy loading with standalone components, preloading
+    strategies, NgOptimizedImage, CLI build optimization, and feature flags. The book's lazy
+    route arrays are mounted for real at <code>/chapter-09/lazy-demo</code>.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Understanding the lazy pattern"
+    description="Defer loading until it is needed: the book's routes array lazy-loads ADMIN_ROUTES via loadChildren only when /admin is first visited."
+>
+    <app-ch9-lazy-pattern-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Implementing standalone components lazy loading"
+    description="A self-contained feature routes file (DASHBOARD_ROUTES) registered with loadChildren, rendering its pages with loadComponent — each page arrives as its own chunk."
+>
+    <app-ch9-standalone-lazy-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Preloading strategies for better performance"
+    description="NoPreloading vs PreloadAllModules vs a custom strategy: SelectivePreloadingStrategy preloads only routes flagged with data: { preload: true }. The bootstrap wiring is kept verbatim in preloading/main.ts (never imported)."
+>
+    <app-ch9-preloading-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Using NgOptimizedImage and image lazy loading"
+    description="The standalone NgOptimizedImage directive: ngSrc with enforced width/height to prevent layout shift, priority for above-the-fold images, and native lazy loading by default."
+>
+    <app-ch9-images-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Optimizing Angular CLI builds"
+    description="This section is command- and configuration-based (no portable component code): AOT compilation, tree shaking, and minification are applied by the production build."
+>
+    <ul>
+    <li><code>ng build --configuration=production</code> — AOT, tree shaking, minification.</li>
+    <li><code>ng build --configuration=production --stats-json</code> — generate a build report.</li>
+    <li><code>npx webpack-bundle-analyzer dist/your-app/stats.json</code> — analyze the bundle (legacy webpack builder; the modern esbuild builder has its own analyze tooling).</li>
+    <li>Split code on demand: <code>loadChildren: () =&gt; import('./admin/admin.routes').then(m =&gt; m.ADMIN_ROUTES)</code> — mounted live in the lazy playground.</li>
+    <li>Prefer targeted imports (e.g. <code>lodash/debounce</code>), standalone components, and server-side Gzip/Brotli compression.</li>
+    </ul>
+</app-demo-card>
+
+<app-demo-card
+    title="Feature flags and conditional feature loading"
+    description="Environment-based flags, a FeatureService registry, canMatch route gating, and runtime dynamic import — toggle the flags and watch features load (or refuse to)."
+>
+    <app-ch9-feature-flags-demo />
+</app-demo-card>

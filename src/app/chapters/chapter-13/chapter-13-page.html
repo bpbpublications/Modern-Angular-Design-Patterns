@@ -1,0 +1,50 @@
+<h1>Chapter 13 — Micro-Frontends with Angular Elements</h1>
+<p class="intro">
+    Splitting a frontend into independently developed and deployed units: Angular
+    Elements as framework-agnostic web components, singleton services for shared state,
+    and dynamic dependency injection across isolated runtimes. The custom elements below
+    are registered for real inside this app.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Micro frontends and why they matter"
+    description="Concept section — no code in the book. Micro frontends bring microservice principles to the UI: each slice owns its codebase, build, and deployment pipeline, and plugs into a shared shell at runtime."
+>
+    <ul>
+    <li><strong>Independent deployment</strong> — ship parts of the UI without touching the rest.</li>
+    <li><strong>Technology agnostic</strong> — mix frameworks or Angular versions per slice.</li>
+    <li><strong>Team autonomy</strong> — cross-functional teams own features end to end.</li>
+    <li><strong>Scalability &amp; maintainability</strong> — smaller, focused, testable codebases.</li>
+    </ul>
+</app-demo-card>
+
+<app-demo-card
+    title="Angular Elements — turning a component into a custom element"
+    description="The standalone UserCardComponent (signal input) is wrapped with createCustomElement and registered as <user-card-element> — the book's main.ts flow, executed once by the demo host. The verbatim entry point lives in elements/main.ts (intentionally never imported)."
+>
+    <app-ch13-user-card-element-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Managing shared logic — singleton AuthService"
+    description="AuthService (providedIn: 'root') holds the current user in a BehaviorSubject; two 'micro frontend' widgets consume getCurrentUser() and stay synchronized because they share the same instance."
+>
+    <app-ch13-singleton-auth-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Dynamic dependency injection for shared services"
+    description="An abstract LoggingService contract, a ConsoleLoggingService implementation, and the app-injector helper: <my-element> is registered with the shell's shared injector so it logs through the host-provided singleton. The window.globalInjector variant runs on the buttons. Verbatim bootstrap snippets: dynamic-di/main.ts and dynamic-di/register-element.ts (never imported)."
+>
+    <app-ch13-dynamic-di-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Building and integrating micro frontends"
+    description="MyWidgetComponent (@Input title, @Output clicked) packaged as <my-widget> via createApplication + createCustomElement; the host listens for the 'clicked' CustomEvent like the book's usage page. Non-runnable snippets are kept verbatim: elements-build/main.ts, host-main.ts, dynamic-integration.ts (never imported), plus angular.json.txt, usage.html.txt, and static-integration.html.txt."
+>
+    <app-ch13-my-widget-demo />
+</app-demo-card>

@@ -1,0 +1,72 @@
+ <h1>Chapter 12 — Advanced Behavioral Patterns</h1>
+<p class="intro">
+    Facade, Mediator, Strategy, and Visitor — advanced behavioral patterns for
+    decoupled communication, runtime behavior selection, and extensible operations.
+    Every demo below runs the book's code as-is.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Facade — API service direct communication"
+    description="The book's UserProfileComponent fetches through UserService with the AsyncPipe and a loading flag. The demo host substitutes a fake HttpClient so the verbatim code runs against a fabricated user."
+>
+    <app-ch12-api-service-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Facade — multiple services with a facade"
+    description="DashboardFacade combines AnalyticsService and SalesService with combineLatest into one metrics$ stream."
+>
+    <app-ch12-facade-multi-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Mediator — shared service with RxJS Subjects"
+    description="UiMediatorService funnels the taskCompleted event through a Subject; emitter and subscriber stay decoupled and unaware of each other."
+>
+    <app-ch12-ui-mediator-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Mediator — global event bus"
+    description="EventBusService (typed AppEventType enum revision) filters a Subject<AppEvent> by event type. The EmitterComponent emits NAVIGATE with payload '/dashboard'; the string-keyed revision is ported alongside in event-bus.service.basic.ts."
+>
+    <app-ch12-event-bus-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Strategy — dynamic form validation"
+    description="ValidationStrategy implementations (email / phone) are injected through the VALIDATION_STRATEGY InjectionToken; FormValidatorService delegates to whichever strategy its injector provides."
+>
+    <app-ch12-validation-strategy-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Strategy — factory provider for runtime selection"
+    description="The book's useFactory provider picks EmailValidationStrategy or PhoneValidationStrategy from UserContextService at injector creation. The bootstrap-level main.ts snippets live verbatim in strategy/main.ts and strategy/main.factory.ts (intentionally never imported)."
+>
+    <app-ch12-strategy-factory-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Strategy — component behavior (edit modes)"
+    description="InlineEditStrategy and ModalEditStrategy implement the EditStrategy interface's startEdit(item), swapping editing behavior without conditionals in the component."
+>
+    <app-ch12-edit-strategy-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Visitor — dynamic form rendering"
+    description="FormBuilderVisitor visits each Question of a discriminated union and builds the form controls; DynamicFormComponent renders the structure with @switch. The book's compact alternate visitor is ported in form-builder.visitor.alt.ts."
+>
+    <app-ch12-visitor-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Combining patterns — notification management in a dashboard"
+    description="Facade (NotificationFacade over an NgRx-style store) + Mediator (UiMediatorService): completing a task in TaskWidgetComponent triggers NotificationCenterComponent to refresh notifications — the widgets never reference each other."
+>
+    <app-ch12-combined-demo />
+</app-demo-card>

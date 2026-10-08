@@ -1,0 +1,11 @@
+// Build output configuration for distributing the element as a single,
+// unhashed JS bundle. Stored verbatim with a .txt suffix so the demo app's build does
+// not pick it up (this app has its own angular.json, which must not be modified).
+// angular.json (excerpt for the element project/target)
+{
+  "outputHashing": "none",
+  "index": "projects/mfe/src/index.html",
+  "main": "projects/mfe/src/main.ts",
+  "scripts": [],
+  "styles": []
+}

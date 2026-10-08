@@ -1,0 +1,79 @@
+<h1>Chapter 3 — Component-Driven Development</h1>
+<p class="intro">
+    Composition over inheritance, smart vs. dumb components, signal-based communication
+    (input / output / viewChild), reusable components, and content projection — every demo
+    below runs the book's code as-is.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="A basic Angular component"
+    description="ProductComponent encapsulates its template, styles, and data — the fundamental unit of Angular's component-based architecture."
+>
+    <app-ch3-basic-component-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Composition pattern — shopping cart"
+    description="CartComponent composes ProductListComponent, which composes ProductComponent instances. Small blocks assemble into a larger UI without inheritance."
+>
+    <app-ch3-composition-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="input() — parent-to-child communication"
+    description="ProductListComponent passes each product object down to ProductComponent via [product]; the child stays purely presentational."
+>
+    <app-ch3-input-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="output() — child-to-parent communication"
+    description="Clicking Add to Cart emits productAdded; the parent's onProductAdded() logs the product to the console."
+>
+    <app-ch3-output-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="viewChild() — direct child component access"
+    description="CounterContainerComponent grabs the CounterComponent instance via viewChild.required and calls its increment() method from the parent button."
+>
+    <app-ch3-viewchild-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Reusable button component"
+    description="ButtonComponent is configured per usage through label and color inputs and reports clicks through the clicked output."
+>
+    <app-ch3-button-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="OnPush change detection"
+    description="AlertComponent uses ChangeDetectionStrategy.OnPush and re-renders only when its message input changes."
+>
+    <app-ch3-onpush-alert-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Content projection — single slot"
+    description="CardComponent wraps whatever the parent places between <app-card> tags via a single <ng-content>."
+>
+    <app-ch3-card-projection-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Content projection — named slots"
+    description="ModalComponent projects header, .main-content, and [modal-footer] into dedicated slots using <ng-content select>."
+>
+    <app-ch3-modal-projection-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Conditional content projection"
+    description="EmptyAwareComponent checks @ContentChild(TemplateRef) after content init and falls back to 'No content provided.' when nothing matched."
+>
+    <app-ch3-empty-aware-demo />
+</app-demo-card>

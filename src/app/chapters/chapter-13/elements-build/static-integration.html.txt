@@ -1,0 +1,10 @@
+<!-- Static integration of a deployed micro-frontend bundle into a host
+     HTML file. Stored as .txt so the build does not pick it up (the CDN URL does not
+     exist). -->
+<script src="https://cdn.example.com/micro-frontends/user-profile/main.js"></script>
+<user-profile-widget user-id="123"></user-profile-widget>
+
+<!-- Coordination via custom events (fragment printed with an elided body). -->
+<script>
+  element.addEventListener('user-logged-in', e => { ... });
+</script>

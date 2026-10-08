@@ -1,0 +1,70 @@
+ <h1>Chapter 10 — Forms and User Input</h1>
+<p class="intro">
+    Template-driven vs reactive forms, form state tracking, built-in validators, the Builder
+    pattern for dynamic forms, the Strategy pattern for validation logic, and submission
+    workflows — every form below is fully interactive with visible validation states.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Template-driven forms"
+    description="The book's declarative LoginComponent: ngModel with required + email attribute validators, the ngForm tracking validity implicitly."
+>
+    <app-ch10-template-login-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Reactive forms"
+    description="The book's model-driven LoginComponent: an injected FormBuilder creates the form group with programmatic validators, and onSubmit() checks form.valid."
+>
+    <app-ch10-reactive-login-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Tracking form state"
+    description="pristine/dirty, touched/untouched, valid/invalid: validation messages appear only after interaction, the canSubmit helper gates the submit button, and the control state is readable in TypeScript."
+>
+    <app-ch10-form-state-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Overview of built-in validators"
+    description="required, minLength/maxLength, pattern, email and nullValidator applied in both reactive and template-driven styles, plus Validators.compose() and array syntax for combining rules."
+>
+    <app-ch10-validators-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Builder pattern for dynamic forms"
+    description="Configuration → builder → form → UI: FormElementConfig metadata drives DynamicFormBuilder (fluent API) wrapped in DynamicFormBuilderService, and DynamicFormComponent renders the resulting FormGroup with @for."
+>
+    <app-ch10-builder-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Strategy pattern for validation logic"
+    description="A typed map registry (STRATEGY_VALIDATORS) selects validation rules by name — no switch statements — and the uniqueEmail async validator asks a (fake) server whether the address is taken."
+>
+    <app-ch10-strategy-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Managing form submission workflows in Angular"
+    description="Validate, disable while submitting, call the service, notify on success/failure with tap/catchError, and clean up with finalize — the complete reactive submission workflow."
+>
+    <app-ch10-submission-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Running forms in a zoneless app"
+    description="Bootstrap-level configuration: the book's provideZonelessChangeDetection() main.ts is kept verbatim in zoneless/main.ts and intentionally never imported — this demo app runs with zone.js."
+>
+    <ul>
+    <li>Enable with <code>provideZonelessChangeDetection()</code> at bootstrap, then remove <code>zone.js</code> from the polyfills and uninstall it.</li>
+    <li>Standard form flows need nothing special: bound listeners, signals and <code>markForCheck()</code> (via <code>AsyncPipe</code>) trigger change detection.</li>
+    <li>Watch out for manual DOM listeners and <code>NgZone</code> observables (<code>onStable</code> etc.) — replace with signals, <code>afterNextRender</code>/<code>afterEveryRender</code>, or <code>MutationObserver</code>.</li>
+    <li><code>OnPush</code> is not required but aligns well with zoneless patterns.</li>
+    </ul>
+</app-demo-card>

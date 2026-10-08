@@ -1,0 +1,113 @@
+<h1>Chapter 1 — Angular Fundamentals and Design Patterns</h1>
+<p class="intro">
+    Core building blocks, Signals, design pattern categories, SOLID principles, and MVVM —
+    every demo below runs the book's code as-is.
+</p>
+
+<app-console-panel />
+<br />
+
+<app-demo-card
+    title="Angular startup & components"
+    description="The book's AppComponent renders books provided by BookService (signal + @for). The accompanying main.ts bootstrap snippet lives in startup/main.ts."
+>
+    <app-ch1-startup-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Introduction to Angular Signals"
+    description="BooksComponent: signal for local state, computed for the filtered list, effect logging each query change. Type in the filter box."
+>
+    <app-ch1-signals-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Understanding design patterns — Facade"
+    description="ProductsComponent talks only to ProductsFacade; the facade coordinates data access. Reload shuffles the list via ProductsApi.refresh()."
+>
+    <app-ch1-facade-intro-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Creational — Singleton via DI"
+    description="AuthService is provided in root: one instance per application runtime holds the token."
+>
+    <app-ch1-singleton-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="SOLID — Single Responsibility Principle"
+    description="UserComponent is responsible only for the UI; data arrives via @Input()."
+>
+    <app-ch1-srp-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="SOLID — Open/Closed Principle"
+    description="AlertComponent depends on the Notifier abstraction; email and SMS channels are injected without modifying the component."
+>
+    <app-ch1-ocp-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="SOLID — Liskov Substitution Principle"
+    description="FlyingBird and SwimmingBird substitute for Bird without breaking moveBird()."
+>
+    <app-ch1-lsp-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="SOLID — Interface Segregation Principle"
+    description="Human implements Workable + Eatable; Robot only Workable — it is not forced to implement eat()."
+>
+    <app-ch1-isp-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="SOLID — Dependency Inversion Principle"
+    description="UserComponent depends on an abstraction resolved through Angular DI (inject(UserService)) instead of a concrete instantiation."
+>
+    <app-ch1-dip-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Maintainability — Facade pattern"
+    description="UserFacadeService combines UserService + OrderService with forkJoin; the component stays focused on the UI."
+>
+    <app-ch1-facade-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Reusability — Factory pattern"
+    description="NotificationFactory creates EmailNotification or SMSNotification behind the shared Notification interface."
+>
+    <app-ch1-factory-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Testability — DI for mocking"
+    description="UserComponent receives UserService through DI, so tests can substitute MockUserService without touching the component."
+>
+    <app-ch1-testability-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Performance — Observer pattern with RxJS"
+    description="NotificationService exposes a BehaviorSubject as message$; any subscriber receives updates in real time."
+>
+    <app-ch1-observer-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="Scalability — Lazy loading"
+    description="The book's routes array (loadComponent) is mounted for real: chunks are fetched on first navigation."
+>
+    <app-ch1-lazy-demo />
+</app-demo-card>
+
+<app-demo-card
+    title="MVVM pattern"
+    description="Model (User + UserService), View (user.component.html with [(ngModel)]), ViewModel (UserComponent). Update logs the new model."
+>
+    <app-ch1-mvvm-demo />
+</app-demo-card>

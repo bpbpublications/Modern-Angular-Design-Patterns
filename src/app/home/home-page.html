@@ -1,0 +1,17 @@
+<header class="hero">
+    <h1>Modern Angular Design Patterns</h1>
+    <p>
+    Interactive demo application accompanying the book. Every code snippet from the
+    book is ported as-is — same names, schemas, and signatures — and wired into live,
+    working demos organized by chapter.
+    </p>
+</header>
+<div class="grid">
+    @for (chapter of chapters; track chapter.number) {
+    <a class="card" [routerLink]="['/', chapter.slug]">
+        <span class="chip">Chapter {{ chapter.number }}</span>
+        <h3>{{ chapter.title }}</h3>
+        <p>{{ chapter.description }}</p>
+    </a>
+    }
+</div>

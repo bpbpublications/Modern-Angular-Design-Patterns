@@ -1,0 +1,11 @@
+<section class="demo-card">
+    <header>
+    <h3>{{ title() }}</h3>
+    @if (description()) {
+        <p>{{ description() }}</p>
+    }
+    </header>
+    <div class="demo-body">
+    <ng-content />
+    </div>
+</section>

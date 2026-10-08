@@ -1,0 +1,44 @@
+<table>
+    <tr>
+    <th>required</th>
+    <td><input [formControl]="requiredCtl" placeholder="Cannot be blank" /></td>
+    <td [class.ok]="requiredCtl.valid">{{ status(requiredCtl) }}</td>
+    </tr>
+    <tr>
+    <th>minLength(3) / maxLength(10)</th>
+    <td><input [formControl]="lengthCtl" placeholder="3–10 characters" /></td>
+    <td [class.ok]="lengthCtl.valid">{{ status(lengthCtl) }}</td>
+    </tr>
+    <tr>
+    <th>pattern('^[a-zA-Z0-9_]+$')</th>
+    <td><input [formControl]="patternCtl" placeholder="Letters, digits, _" /></td>
+    <td [class.ok]="patternCtl.valid">{{ status(patternCtl) }}</td>
+    </tr>
+    <tr>
+    <th>required + email</th>
+    <td><input [formControl]="emailCtl" placeholder="name@example.com" /></td>
+    <td [class.ok]="emailCtl.valid">{{ status(emailCtl) }}</td>
+    </tr>
+    <tr>
+    <th>nullValidator</th>
+    <td><input [formControl]="nullCtl" placeholder="Anything goes" /></td>
+    <td [class.ok]="nullCtl.valid">{{ status(nullCtl) }}</td>
+    </tr>
+    <tr>
+    <th>compose([required, pattern(/^[A-Z]/)])</th>
+    <td><input [formControl]="composeCtl" placeholder="Starts with a capital" /></td>
+    <td [class.ok]="composeCtl.valid">{{ status(composeCtl) }}</td>
+    </tr>
+    <tr>
+    <th>array syntax [required, pattern(/^[A-Z]/)]</th>
+    <td><input [formControl]="arrayCtl" placeholder="Starts with a capital" /></td>
+    <td [class.ok]="arrayCtl.valid">{{ status(arrayCtl) }}</td>
+    </tr>
+</table>
+
+<p><strong>"Applying validators in reactive forms" — the fb.group example:</strong></p>
+<form [formGroup]="form">
+    <input formControlName="email" placeholder="email" />
+    <input formControlName="password" type="password" placeholder="password (min 6)" />
+    form.valid: <code>{{ form.valid }}</code>
+</form>
